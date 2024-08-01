@@ -61,6 +61,8 @@ class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
                 binding.imageLinearLay.visibility = View.GONE
                 binding.eyeChartTextView.text = eyeChartItem.text
                 binding.eyeChartTextView.textSize = size
+                val paddingSize = (binding.eyeChartTextView.textSize/2).toInt();
+                binding.eyeChartTextView.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
             } else {
                 Log.d("MYTAG", "drawable list is not empty")
                 binding.imageLinearLay.visibility = View.VISIBLE
@@ -74,6 +76,14 @@ class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
                 val textSize =
                     convertPixelsToXxhdpi(eyeChartItem.textSize.toFloat(), binding.root.context)
 
+//                val paddingSize = (eyeChartItem.textSize/2)
+//                binding.image1.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+//                binding.image2.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+//                binding.image3.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+//                binding.image4.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+//                binding.image5.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+
+                binding.image5.setImageResource(eyeChartItem.drawableList[4])
                 binding.image1.layoutParams.height = textSize.toInt()
                 binding.image1.layoutParams.width = textSize.toInt()
                 binding.image1.requestLayout()
@@ -96,6 +106,7 @@ class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
             }
             binding.eyeChartTextSize.text = size.toInt().toString()
             binding.eyeChartTextValue.text = (position + 1).toString()
+
         }
 
         private fun convertPixelsToXxhdpi(px: Float, context: Context): Float {
