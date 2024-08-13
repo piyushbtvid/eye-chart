@@ -50,7 +50,7 @@ class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
         return differ.currentList.size
     }
 
-    inner class EyeChartViewHolder(val binding: EyeChartLineBinding) :
+    inner class EyeChartViewHolder(private val binding: EyeChartLineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(eyeChartItem: EyeChartLineItem, position: Int) {

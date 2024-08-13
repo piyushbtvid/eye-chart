@@ -16,4 +16,13 @@
     <!-- Error messages -->
     <string name="error_fragment_message">An error occurred</string>
     <string name="dismiss_error">Dismiss</string>
+    <string name="activate_your_device">Activate Your Device</string>
+    <string name="step_one">Step 1.</string>
+    <string name="from_your_mobile_device_or_computer_visit">From your mobile device or computer, visit:</string>
+    <string name="log_in_with_your_account_credentials">Log In with your account credentials.</string>
+    <string name="step_two">Step 2.</string>
+    <string name="enter_the_code">Enter the code:</string>
+    <string name="step_3">Step 3.</string>
+    <string name="scan_code">Or scan this code:</string>
+    <string name="login_barcode">login barcode</string>
 </resources>
