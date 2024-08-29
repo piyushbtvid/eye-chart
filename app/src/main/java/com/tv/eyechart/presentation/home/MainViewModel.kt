@@ -1,4 +1,4 @@
-package com.tv.eyechart.viewmodel
+package com.tv.eyechart.presentation.home
 
 import androidx.lifecycle.ViewModel
 import com.tv.eyechart.R

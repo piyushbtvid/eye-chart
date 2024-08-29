@@ -1,4 +1,4 @@
-package com.tv.eyechart
+package com.tv.eyechart.presentation.home
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,8 @@ import android.view.KeyEvent
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tv.eyechart.adapter.EyeChartAdapter
+import com.tv.eyechart.presentation.home.adapter.EyeChartAdapter
 import com.tv.eyechart.databinding.ActivityMainBinding
-import com.tv.eyechart.viewmodel.MainViewModel
 
 /*
 * Main Activity class that loads {@link MainFragment}.

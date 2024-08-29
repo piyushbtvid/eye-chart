@@ -8,7 +8,7 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".presentation.authentication.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,14 +25,27 @@
             android:layout_height="wrap_content"
             android:text="@string/activate_your_device"
             android:textColor="@color/white"
-            android:textSize="26sp" />
+            android:textSize="24sp" />
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@color/white" />
+            android:orientation="horizontal">
 
+            <View
+                android:layout_width="37.5dp"
+                android:layout_height=".5dp"
+                android:alpha="1"
+                android:background="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:alpha=".3"
+                android:background="@color/white" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/step_one"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,22 +78,22 @@
                 android:layout_marginStart="20dp"
                 android:text="@string/from_your_mobile_device_or_computer_visit"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="77dp"
+            android:layout_marginStart="57dp"
             android:layout_marginTop="7dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/url_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="www.abc.tv.io.com"
                 android:textColor="#6096ff"
-                android:textSize="26sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -96,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/step_two"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +117,7 @@
                 android:layout_marginStart="20dp"
                 android:text="@string/log_in_with_your_account_credentials"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
 
@@ -119,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/step_3"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +140,7 @@
                 android:layout_marginStart="20dp"
                 android:text="@string/enter_the_code"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
 
@@ -135,12 +148,13 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
+            android:layout_marginStart="51dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:padding="5dp">
 
             <TextView
+                android:id="@+id/pin_txt_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -148,11 +162,11 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
-                android:text="A"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/pin_txt_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -160,25 +174,12 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
-                android:text="A"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/box_background"
-                android:gravity="center"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:text="A"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="24sp" />
 
 
             <TextView
+                android:id="@+id/pin_txt_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -186,12 +187,12 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
-                android:text="A"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="24sp" />
 
 
             <TextView
+                android:id="@+id/pin_txt_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -199,11 +200,12 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
-                android:text="A"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="24sp" />
+
 
             <TextView
+                android:id="@+id/pin_txt_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -211,9 +213,20 @@
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
-                android:text="A"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/pin_txt_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/box_background"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -224,7 +237,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -235,31 +247,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/scan_code"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/barcode_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="5dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/barcode_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/login_barcode"
-                    android:src="@drawable/qr_tst_img" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            android:background="@color/white"
+            android:contentDescription="@string/login_barcode"
+            android:padding="4dp"
+            app:round="7dp"
+            tools:src="@drawable/qr_tst_img" />
 
     </LinearLayout>
 
@@ -269,14 +268,20 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="80dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/steps_linear_lay">
 
         <View
+            android:layout_width="37.5dp"
+            android:layout_height=".5dp"
+            android:alpha="1"
+            android:background="@color/white" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height=".5dp"
+            android:alpha=".3"
             android:background="@color/white" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

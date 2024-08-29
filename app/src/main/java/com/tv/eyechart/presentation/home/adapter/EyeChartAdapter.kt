@@ -1,7 +1,6 @@
-package com.tv.eyechart.adapter
+package com.tv.eyechart.presentation.home.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tv.eyechart.R
 import com.tv.eyechart.model.EyeChartLineItem
-import com.tv.eyechart.adapter.EyeChartAdapter.EyeChartViewHolder
+import com.tv.eyechart.presentation.home.adapter.EyeChartAdapter.EyeChartViewHolder
 import com.tv.eyechart.databinding.EyeChartLineBinding
 
 class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
@@ -61,8 +59,13 @@ class EyeChartAdapter : RecyclerView.Adapter<EyeChartViewHolder>() {
                 binding.imageLinearLay.visibility = View.GONE
                 binding.eyeChartTextView.text = eyeChartItem.text
                 binding.eyeChartTextView.textSize = size
-                val paddingSize = (binding.eyeChartTextView.textSize/2).toInt();
-                binding.eyeChartTextView.setPadding(paddingSize,paddingSize,paddingSize,paddingSize)
+                val paddingSize = (binding.eyeChartTextView.textSize / 2).toInt();
+                binding.eyeChartTextView.setPadding(
+                    paddingSize,
+                    paddingSize,
+                    paddingSize,
+                    paddingSize
+                )
             } else {
                 Log.d("MYTAG", "drawable list is not empty")
                 binding.imageLinearLay.visibility = View.VISIBLE

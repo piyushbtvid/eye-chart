@@ -48,9 +48,9 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center"
+        android:orientation="horizontal"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/eyeChartTextValue"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,7 +63,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginEnd="10dp"
-            android:tint="@color/lb_tv_white"
+            android:tint="@color/white"
             tools:src="@drawable/house" />
 
         <ImageView
@@ -71,7 +71,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginEnd="10dp"
-            android:tint="@color/lb_tv_white"
+            android:tint="@color/white"
             tools:src="@drawable/house" />
 
         <ImageView
@@ -79,7 +79,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginEnd="10dp"
-            android:tint="@color/lb_tv_white"
+            android:tint="@color/white"
             tools:src="@drawable/house" />
 
         <ImageView
@@ -87,14 +87,14 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginEnd="10dp"
-            android:tint="@color/lb_tv_white"
+            android:tint="@color/white"
             tools:src="@drawable/house" />
 
         <ImageView
             android:id="@+id/image_5"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:tint="@color/lb_tv_white"
+            android:tint="@color/white"
             tools:src="@drawable/house" />
 
     </LinearLayout>
