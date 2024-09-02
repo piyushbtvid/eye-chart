@@ -1,6 +1,7 @@
 package com.tv.eyechart.data
 
 import android.content.SharedPreferences
+import android.util.Log
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,6 +31,7 @@ class UserPreferences @Inject constructor(private val sharedPreferences: SharedP
     }
 
     fun setLoginStatus(isLogin: Boolean) {
+        Log.e("MYTAG", "change user login status called in user perfclass with $isLogin")
         sharedPreferences.edit().putBoolean(KEY_IS_LOGIN, isLogin).apply()
     }
 

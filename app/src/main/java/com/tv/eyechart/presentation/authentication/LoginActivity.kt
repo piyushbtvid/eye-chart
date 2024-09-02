@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -45,9 +46,11 @@ class LoginActivity : FragmentActivity() {
         ViewModelProvider(this)[LoginViewModel::class.java]
     }
     private var loginPin: String? = null
+    private var deviceType: DeviceType? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        Log.e("MYTAG", "on create called")
         setContentView(binding.root)
         checkUserLoginStatus()
         loginUser()
@@ -94,8 +97,10 @@ class LoginActivity : FragmentActivity() {
                 getUniqueID()
             }
         }
-        val deviceType = DeviceType(deviceType = "fireTv", deviceId = deviceId)
-        loginViewModel.getLoginData(deviceType)
+        deviceType = DeviceType(deviceType = "fireTv", deviceId = deviceId)
+//        deviceType?.let {
+//            loginViewModel.getLoginData(it)
+//        }
     }
 
     private fun getUniqueID(): String {
@@ -123,11 +128,12 @@ class LoginActivity : FragmentActivity() {
                             .into(binding.barcodeImg)
 
                         loginPin = response?.data?.pin
-                        if (!isCheckingRunning) {
-                            loginPin?.let { Pin(pin = it) }
-                                ?.let { loginViewModel.checkUserLogin(it) }
-                            isCheckingRunning = true
-                        }
+//                        if (!isCheckingRunning) {
+//                            Log.e("MYTAG", "!isChecking is called for check user login")
+                        loginPin?.let { Pin(pin = it) }
+                            ?.let { loginViewModel.checkUserLogin(it) }
+                        isCheckingRunning = true
+                        //         }
                     }
                 }
             }
@@ -149,6 +155,13 @@ class LoginActivity : FragmentActivity() {
                             finish()
                         }
                     }
+
+                    if (resource is Resource.Error) {
+                        Log.e(
+                            "MYTAG",
+                            "check login collectv error on login activity is ${resource.message}"
+                        )
+                    }
                 }
             }
         }
@@ -156,7 +169,9 @@ class LoginActivity : FragmentActivity() {
 
     private fun checkUserLoginStatus() {
         val isLogin = loginViewModel.getUserData()
+        Log.e("MYTAG","login status is $isLogin")
         if (isLogin) {
+            Toast.makeText(this, "User Already Log in!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -168,5 +183,34 @@ class LoginActivity : FragmentActivity() {
             .withSize(binding.barcodeImg.width + 1000, binding.barcodeImg.height + 1000)
             .bitmap()
         barcodeImageView.setImageBitmap(myBitmap)
+    }
+
+    override fun onPause() {
+        loginViewModel.loginJob?.cancel()
+        loginViewModel.checkLoginJob?.cancel()
+        super.onPause()
+        Log.e("MYTAG", "Login activity on pause called")
+    }
+
+    override fun onResume() {
+        Log.e("MYTAG", "on resume called")
+        super.onResume()
+    }
+
+    override fun onStop() {
+        loginViewModel.loginJob?.cancel()
+        loginViewModel.checkLoginJob?.cancel()
+        super.onStop()
+        Log.e("MYTAG", "Login activity on stop called")
+    }
+
+
+    override fun onStart() {
+        isCheckingRunning = false
+        deviceType?.let {
+            loginViewModel.getLoginData(it)
+        }
+        Log.e("MYTAG", "on Start is called")
+        super.onStart()
     }
 }

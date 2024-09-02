@@ -1,13 +1,17 @@
 package com.tv.eyechart.presentation.home
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tv.eyechart.presentation.home.adapter.EyeChartAdapter
 import com.tv.eyechart.databinding.ActivityMainBinding
+import com.tv.eyechart.presentation.setting.SettingActivity
 
 /*
 * Main Activity class that loads {@link MainFragment}.
@@ -100,7 +104,16 @@ import com.tv.eyechart.databinding.ActivityMainBinding
                 true
             }
 
+            KeyEvent.KEYCODE_MENU -> {
+                Toast.makeText(this@MainActivity, "setting screen opening!", Toast.LENGTH_SHORT)
+                    .show()
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
+                startActivity(intent)
+                true
+            }
+
             else -> super.onKeyDown(keyCode, event)
         }
     }
+
 }

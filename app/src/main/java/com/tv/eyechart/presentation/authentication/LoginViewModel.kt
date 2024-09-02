@@ -36,24 +36,30 @@ class LoginViewModel @Inject constructor(
         MutableStateFlow(Resource.Unspecified())
     val userLoginStatus = _userLoginStatus.asStateFlow()
 
-    private var loginJob: Job? = null
+    var loginJob: Job? = null
+
+    var checkLoginJob: Job? = null
 
     fun getLoginData(deviceType: DeviceType) {
-        loginJob?.cancel()  // Cancel any previous job
+        loginJob?.cancel()
         loginJob = viewModelScope.launch(Dispatchers.IO) {
-            while (isActive) {  // Use isActive to ensure coroutine is not cancelled
+            while (isActive) {
+                Log.e("MYTAG", "get login data method is called in viewmodel")
                 val response = repository.getLoginData(deviceType)
                 _loginData.emit(response)
+                //       delay(10000)
                 delay(5 * DateUtils.MINUTE_IN_MILLIS)
             }
         }
     }
 
     fun checkUserLogin(pin: Pin) {
-        loginJob?.cancel()  // Cancel any previous job
-        loginJob = viewModelScope.launch(Dispatchers.IO) {
-            Log.e("MYTAG","check user login is called in viewmodel method")
+        checkLoginJob?.cancel()  // Cancel any previous job
+        checkLoginJob = viewModelScope.launch(Dispatchers.IO) {
+            Log.e("MYTAG", "check user login  method is called in viewmodel ")
             while (isActive) {  // Use isActive to ensure coroutine is not cancelled
+                Log.e("MYTAG", "check user is Active is called in viewmodel")
+                Log.e("MYTAG", "current pin in viewmodel is $pin")
                 val response = repository.checkUserLogin(pin)
                 _userLoginStatus.emit(response)
                 delay(5000)
@@ -69,11 +75,12 @@ class LoginViewModel @Inject constructor(
     }
 
     fun getUserData(): Boolean {
-        return  userPreferences.isUserLoggedIn()
+        return userPreferences.isUserLoggedIn()
     }
 
     override fun onCleared() {
-        loginJob?.cancel()  // Ensure the job is cancelled when ViewModel is cleared
+        loginJob?.cancel()
+        checkLoginJob?.cancel()
         super.onCleared()
     }
 
